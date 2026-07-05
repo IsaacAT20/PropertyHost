@@ -94,8 +94,10 @@ function renderMaintenance(items) {
 
     list.innerHTML = upcoming.map(item => `
         <li>
-            <span>${item.icon} ${item.text}</span>
-            <span class="status-badge status-${item.status}">${item.date || ""}</span>
+            <a class="maintenance-link" href="maintenance.html?property=${item.propertyId}">
+                <span class="task-main"><span class="task-icon" style="width:28px;height:28px;border-radius:8px;">${getCategoryIcon(item.category)}</span> ${item.text}</span>
+                <span class="status-badge status-${item.status}">${item.date || ""}</span>
+            </a>
         </li>
     `).join("");
 }

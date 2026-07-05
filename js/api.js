@@ -4,7 +4,7 @@
 // Este archivo habla con un Google Apps Script publicado como "Web App"
 // que lee tu Google Sheet y devuelve los datos en formato JSON.
 
-const DEFAULT_SHEET_API_URL = "https://script.google.com/macros/s/TU_ID_DE_DESPLIEGUE/exec";
+const DEFAULT_SHEET_API_URL = "https://script.google.com/macros/s/AKfycby-cWCnx4244vEDBMDj3lgD4d8qIEETaH3xhNvXYlPULjISf7zn9hQR75ylc7VEyfe_/exec";
 const CACHE_KEY = "ph_dashboard_cache";
 const CACHE_MAX_AGE_MS = 5 * 60 * 1000; // 5 minutos
 

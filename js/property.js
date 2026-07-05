@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     renderPropertyHeader(property);
     renderPropertyStats(property);
+    renderRevenueForecastChart("property-revenue-chart", property.revenueTrend, 3);
+    renderExpenseDonut("property-expense-donut", property.expensesByCategory);
     renderPropertyComparisonChart("property-finance-chart", [property]);
 
     const tasks = (data.maintenance || []).filter(m => m.propertyId === propertyId);
@@ -84,9 +86,12 @@ function renderPropertyMaintenance(tasks) {
 
         return `
             <div class="maintenance-item">
-                <div class="task-info">
-                    <strong>${t.icon} ${t.task || t.text}</strong>
-                    <span>${t.date || ""} ${t.assignedTo ? "· Asignado a " + t.assignedTo : ""}</span>
+                <div class="task-main">
+                    <div class="task-icon">${getCategoryIcon(t.category)}</div>
+                    <div class="task-info">
+                        <strong>${t.task || t.text}</strong>
+                        <span>${t.date || ""} ${t.assignedTo ? "· Asignado a " + t.assignedTo : ""}</span>
+                    </div>
                 </div>
                 <span class="status-badge status-${status}">${label}</span>
             </div>

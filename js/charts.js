@@ -5,6 +5,12 @@
 Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.color = "#5B7A8C";
 
+// Muestra un mensaje dentro del panel cuando no hay datos para una gráfica
+function showChartEmptyState(canvas, message) {
+    const wrapper = canvas.closest(".chart-wrap") || canvas.parentElement;
+    wrapper.innerHTML = `<p class="empty-msg" style="text-align:center; padding-top:40px;">${message}</p>`;
+}
+
 const MONTH_NAMES = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
 
 /**
@@ -132,7 +138,12 @@ function linearForecast(values, monthsToForecast) {
  */
 function renderExpenseDonut(canvasId, categoryTotals) {
     const canvas = document.getElementById(canvasId);
-    if (!canvas || !categoryTotals) return;
+    if (!canvas) return;
+
+    if (!categoryTotals || !Object.keys(categoryTotals).length) {
+        showChartEmptyState(canvas, "No hay datos de gastos por categoría todavía. Verifica que tu Apps Script tenga la última versión implementada.");
+        return;
+    }
 
     const labels = Object.keys(categoryTotals);
     const data = Object.values(categoryTotals);
