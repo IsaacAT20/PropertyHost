@@ -1,0 +1,574 @@
+.container{
+    display:grid;
+    grid-template-columns:270px 1fr;
+    min-height:100vh;
+}
+
+/* ============================
+   SIDEBAR
+============================ */
+
+.sidebar{
+    background:linear-gradient(180deg, var(--sidebar-start), var(--sidebar-end));
+    padding:35px 25px;
+    display:flex;
+    flex-direction:column;
+    position:sticky;
+    top:0;
+    height:100vh;
+}
+
+.logo{
+    margin-bottom:50px;
+    padding:0 10px;
+}
+
+.logo h1{
+    color:#fff;
+    font-size:22px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+nav{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+nav a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:rgba(255,255,255,.65);
+    font-weight:500;
+    font-size:15px;
+    padding:13px 16px;
+    border-radius:12px;
+    transition:.2s;
+}
+
+nav a svg{
+    flex-shrink:0;
+    opacity:.85;
+}
+
+nav a:hover{
+    background:rgba(255,255,255,.08);
+    color:#fff;
+}
+
+nav a.active{
+    background:rgba(255,255,255,.14);
+    color:#fff;
+    box-shadow:inset 3px 0 0 var(--accent);
+}
+
+/* ============================
+   MAIN
+============================ */
+
+main{
+    padding:45px 50px;
+    max-width:1400px;
+}
+
+header{
+    margin-bottom:40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+header h2{
+    font-size:32px;
+    font-weight:700;
+    letter-spacing:-.01em;
+}
+
+header p{
+    color:var(--text-light);
+    margin-top:8px;
+}
+
+.today-pill{
+    background:#fff;
+    border:1px solid var(--border);
+    padding:10px 18px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--primary-dark);
+    box-shadow:var(--shadow);
+}
+
+/* ============================
+   STAT CARDS
+============================ */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+
+.card{
+    background:#fff;
+    padding:26px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:4px;
+    background:linear-gradient(90deg, var(--primary), var(--accent));
+    opacity:0;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-lg);
+}
+
+.card:hover::before{
+    opacity:1;
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:18px;
+}
+
+.card-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color:#fff;
+}
+
+.card h3{
+    color:var(--text-light);
+    font-size:14px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
+
+.card span{
+    font-family:var(--font-display);
+    font-size:30px;
+    font-weight:700;
+    color:var(--text);
+    display:block;
+}
+
+.card .trend{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-size:13px;
+    font-weight:600;
+    margin-top:10px;
+}
+
+.trend.up{ color:var(--success); }
+.trend.down{ color:var(--danger); }
+
+/* ============================
+   DASHBOARD GRID (gráfico + mantenimiento)
+============================ */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:22px;
+    margin-top:26px;
+}
+
+.panel{
+    background:#fff;
+    padding:28px 30px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.panel-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+}
+
+.panel-head h3{
+    font-family:var(--font-display);
+    font-size:17px;
+    font-weight:700;
+}
+
+.legend{
+    display:flex;
+    gap:16px;
+    font-size:12px;
+    color:var(--text-light);
+}
+
+.legend span{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+}
+
+.legend .dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+}
+
+.dot.actual{ background:var(--primary-dark); }
+.dot.forecast{ background:var(--accent); }
+
+.chart-wrap{
+    position:relative;
+    height:260px;
+}
+
+.maintenance ul{
+    margin-top:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    list-style:none;
+}
+
+.maintenance li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--border);
+    font-size:14px;
+}
+
+.maintenance li:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+/* ============================
+   PROPERTIES
+============================ */
+
+.section-title{
+    margin:50px 0 22px;
+    font-size:24px;
+    font-weight:700;
+}
+
+.properties-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.property-card{
+    display:block;
+    background:#fff;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:.3s;
+    cursor:pointer;
+    text-decoration:none;
+    color:inherit;
+}
+
+.property-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-lg);
+}
+
+.property-card img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+}
+
+.property-info{
+    padding:20px 22px;
+}
+
+.property-info h3{
+    font-family:var(--font-display);
+    font-size:17px;
+}
+
+.property-info p{
+    margin:6px 0 12px;
+    color:var(--text-light);
+    font-size:13px;
+}
+
+.property-info strong{
+    color:var(--primary-dark);
+}
+
+/* ============================
+   PAGE HEADER (reutilizable en todas las páginas internas)
+============================ */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:36px;
+}
+
+.page-header h2{
+    font-size:30px;
+    font-weight:700;
+}
+
+.page-header p{
+    color:var(--text-light);
+    margin-top:6px;
+}
+
+/* ============================
+   FILTROS (Properties)
+============================ */
+
+.filters{
+    display:flex;
+    gap:10px;
+    margin-bottom:28px;
+}
+
+.filter-btn{
+    background:#fff;
+    border:1px solid var(--border);
+    padding:10px 20px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:14px;
+    color:var(--text-light);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.filter-btn:hover{
+    border-color:var(--primary);
+    color:var(--primary-dark);
+}
+
+.filter-btn.active{
+    background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-color:transparent;
+    color:#fff;
+}
+
+/* ============================
+   FINANCE
+============================ */
+
+.finance-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-bottom:30px;
+}
+
+.finance-charts{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:22px;
+    margin-bottom:30px;
+}
+
+.finance-table-wrap{
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:10px 30px;
+    overflow-x:auto;
+}
+
+.finance-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.finance-table th{
+    text-align:left;
+    padding:18px 12px;
+    color:var(--text-light);
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    border-bottom:1px solid var(--border);
+}
+
+.finance-table td{
+    padding:16px 12px;
+    border-bottom:1px solid var(--border);
+    font-size:14px;
+}
+
+.finance-table tr:last-child td{
+    border-bottom:none;
+}
+
+.finance-table tr:hover td{
+    background:#F7FCFF;
+}
+
+.amount-positive{
+    color:var(--success);
+    font-weight:700;
+}
+
+.amount-negative{
+    color:var(--danger);
+    font-weight:700;
+}
+
+/* ============================
+   MAINTENANCE STATUS (página completa)
+============================ */
+
+.maintenance-full-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.maintenance-item{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:20px 26px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:.2s;
+}
+
+.maintenance-item:hover{
+    box-shadow:var(--shadow-lg);
+}
+
+.maintenance-item .task-info{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.maintenance-item .task-info strong{
+    font-size:15px;
+}
+
+.maintenance-item .task-info span{
+    color:var(--text-light);
+    font-size:13px;
+}
+
+.status-badge{
+    padding:7px 16px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.status-pending{
+    background:#FEF3C7;
+    color:#B45309;
+}
+
+.status-progress{
+    background:#DBEAFE;
+    color:#1D4ED8;
+}
+
+.status-done{
+    background:#D1FAE5;
+    color:#047857;
+}
+
+/* ============================
+   PROPERTY DETAIL PAGE
+============================ */
+
+.back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:var(--text-light);
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    margin-bottom:22px;
+    transition:.2s;
+}
+
+.back-link:hover{
+    color:var(--primary-dark);
+}
+
+.property-hero{
+    align-items:flex-start;
+}
+
+.empty-msg{
+    color:var(--text-light);
+    font-style:italic;
+    margin-top:10px;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width:1000px){
+    .container{
+        grid-template-columns:1fr;
+    }
+    .sidebar{
+        position:relative;
+        height:auto;
+    }
+    .cards, .properties-grid, .finance-summary{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .dashboard-grid, .finance-charts{
+        grid-template-columns:1fr;
+    }
+}
+
+/* ============================
+   IMPRESIÓN / EXPORTAR (Reports)
+============================ */
+
+@media print{
+    .sidebar{ display:none; }
+    .container{ grid-template-columns:1fr; }
+    #export-btn{ display:none; }
+    main{ padding:0; }
+    .card, .panel, .maintenance-item{ box-shadow:none; border:1px solid var(--border); }
+}

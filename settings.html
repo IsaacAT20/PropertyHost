@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PropertyHost - Settings</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .settings-panel{
+            background:#fff;
+            border-radius:var(--radius);
+            box-shadow:var(--shadow);
+            padding:32px;
+            max-width:620px;
+            margin-bottom:24px;
+        }
+        .settings-panel h3{
+            font-family:var(--font-display);
+            font-size:17px;
+            margin-bottom:6px;
+        }
+        .settings-panel .hint{
+            color:var(--text-light);
+            font-size:13px;
+            margin-bottom:20px;
+        }
+        .field{
+            margin-bottom:18px;
+        }
+        .field label{
+            display:block;
+            font-size:13px;
+            font-weight:600;
+            color:var(--text);
+            margin-bottom:8px;
+        }
+        .field input{
+            width:100%;
+            padding:12px 14px;
+            border:1px solid var(--border);
+            border-radius:10px;
+            font-size:14px;
+            font-family:var(--font-body);
+            background:#F7FCFF;
+        }
+        .field input:focus{
+            outline:none;
+            border-color:var(--primary);
+        }
+        .btn{
+            border:none;
+            padding:12px 22px;
+            border-radius:10px;
+            font-weight:600;
+            font-size:14px;
+            cursor:pointer;
+            transition:.2s;
+        }
+        .btn-primary{
+            background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color:#fff;
+        }
+        .btn-primary:hover{
+            box-shadow:0 8px 20px rgba(2,132,199,.3);
+        }
+        .btn-danger{
+            background:#FEE2E2;
+            color:#B91C1C;
+        }
+        .btn-danger:hover{
+            background:#FECACA;
+        }
+        .save-msg{
+            display:none;
+            color:var(--success);
+            font-size:13px;
+            font-weight:600;
+            margin-left:14px;
+        }
+        .actions{
+            display:flex;
+            align-items:center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h1>🏡 PropertyHost</h1>
+            </div>
+
+            <nav>
+                <a href="index.html" data-page="index">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="properties.html" data-page="properties">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+                    <span>Properties</span>
+                </a>
+                <a href="finance.html" data-page="finance">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <span>Finance</span>
+                </a>
+                <a href="maintenance.html" data-page="maintenance">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <span>Maintenance</span>
+                </a>
+                <a href="reports.html" data-page="reports">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                    <span>Reports</span>
+                </a>
+                <a href="settings.html" data-page="settings" class="active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <main>
+
+            <div class="page-header">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Configura tu conexión con Google Sheets y tus preferencias.</p>
+                </div>
+            </div>
+
+            <div class="settings-panel">
+                <h3>Conexión con Google Sheets</h3>
+                <p class="hint">Pega la URL de tu Apps Script (termina en /exec). No necesitas tocar el código.</p>
+
+                <div class="field">
+                    <label for="sheet-url-input">URL de Apps Script</label>
+                    <input type="text" id="sheet-url-input" placeholder="https://script.google.com/macros/s/AKfycb.../exec">
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="save-url-btn">Guardar</button>
+                    <span class="save-msg" id="save-msg">✓ Guardado</span>
+                </div>
+            </div>
+
+            <div class="settings-panel">
+                <h3>Preferencias</h3>
+                <p class="hint">Personaliza el saludo del Dashboard.</p>
+
+                <div class="field">
+                    <label for="owner-name-input">Tu nombre</label>
+                    <input type="text" id="owner-name-input" placeholder="Isaac">
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="save-name-btn">Guardar</button>
+                    <span class="save-msg" id="save-name-msg">✓ Guardado</span>
+                </div>
+            </div>
+
+            <div class="settings-panel">
+                <h3>Datos en cache</h3>
+                <p class="hint">PropertyHost guarda una copia local de tus datos para que la página cargue más rápido. Si acabas de actualizar el Sheet y no ves los cambios, borra el cache.</p>
+
+                <div class="actions">
+                    <button class="btn btn-danger" id="clear-cache-btn">Borrar cache</button>
+                    <span class="save-msg" id="clear-cache-msg">✓ Cache borrado</span>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/settings.js"></script>
+
+</body>
+
+</html>

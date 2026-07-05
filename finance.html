@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PropertyHost - Finance</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h1>🏡 PropertyHost</h1>
+            </div>
+
+                        <nav>
+                <a href="index.html" data-page="index">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="properties.html" data-page="properties">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+                    <span>Properties</span>
+                </a>
+                <a href="finance.html" data-page="finance" class="active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <span>Finance</span>
+                </a>
+                <a href="maintenance.html" data-page="maintenance">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <span>Maintenance</span>
+                </a>
+                <a href="reports.html" data-page="reports">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                    <span>Reports</span>
+                </a>
+                <a href="settings.html" data-page="settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <main>
+
+            <div class="page-header">
+                <div>
+                    <h2>Finance</h2>
+                    <p>Ingresos y gastos por propiedad.</p>
+                </div>
+            </div>
+
+            <section class="finance-summary" id="finance-summary">
+                <div class="card">
+                    <h3>Total Revenue</h3>
+                    <span id="finance-revenue">$186,450</span>
+                </div>
+                <div class="card">
+                    <h3>Total Expenses</h3>
+                    <span id="finance-expenses">$22,580</span>
+                </div>
+                <div class="card">
+                    <h3>Net Profit</h3>
+                    <span id="finance-profit">$163,870</span>
+                </div>
+            </section>
+
+            <section class="finance-charts">
+                <div class="panel">
+                    <div class="panel-head">
+                        <h3>Revenue vs Expenses by Property</h3>
+                    </div>
+                    <div class="chart-wrap">
+                        <canvas id="property-comparison-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head">
+                        <h3>Expenses by Category</h3>
+                    </div>
+                    <div class="chart-wrap">
+                        <canvas id="expense-donut-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <div class="finance-table-wrap">
+                <table class="finance-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Revenue</th>
+                            <th>Expenses</th>
+                            <th>Profit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="finance-table-body">
+                        <tr>
+                            <td>Casa Mango</td>
+                            <td class="amount-positive">$48,250</td>
+                            <td class="amount-negative">$5,100</td>
+                            <td class="amount-positive">$43,150</td>
+                        </tr>
+                        <tr>
+                            <td>Villa Sunset</td>
+                            <td class="amount-positive">$42,800</td>
+                            <td class="amount-negative">$6,300</td>
+                            <td class="amount-positive">$36,500</td>
+                        </tr>
+                        <tr>
+                            <td>Casa Coral</td>
+                            <td class="amount-positive">$38,900</td>
+                            <td class="amount-negative">$4,780</td>
+                            <td class="amount-positive">$34,120</td>
+                        </tr>
+                        <tr>
+                            <td>Ocean Breeze</td>
+                            <td class="amount-positive">$35,600</td>
+                            <td class="amount-negative">$3,900</td>
+                            <td class="amount-positive">$31,700</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/finance.js"></script>
+
+</body>
+
+</html>

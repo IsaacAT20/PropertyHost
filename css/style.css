@@ -1,0 +1,67 @@
+/* ==========================
+   PROPERTYHOST DESIGN SYSTEM — "Sky Finance"
+========================== */
+
+:root{
+
+    /* Celeste como color de marca, con profundidad para el sidebar */
+    --primary:#38BDF8;
+    --primary-dark:#0284C7;
+    --primary-deep:#0C4A6E;
+    --accent:#22D3EE;
+
+    --success:#10B981;
+    --warning:#F59E0B;
+    --danger:#F43F5E;
+
+    --background:#EFF8FF;
+
+    --sidebar-start:#0C4A6E;
+    --sidebar-end:#075985;
+
+    --card:#FFFFFF;
+
+    --text:#0F2A3B;
+    --text-light:#5B7A8C;
+
+    --border:#DCEEFB;
+
+    --shadow:0 15px 35px rgba(3,60,97,.08);
+    --shadow-lg:0 25px 50px rgba(3,60,97,.14);
+
+    --radius:20px;
+
+    --font-display:'Sora', 'Inter', sans-serif;
+    --font-body:'Inter', sans-serif;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:var(--font-body);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(56,189,248,.12), transparent 45%),
+        radial-gradient(circle at 0% 100%, rgba(34,211,238,.10), transparent 40%),
+        var(--background);
+    background-attachment:fixed;
+    color:var(--text);
+}
+
+h1, h2, h3, .page-header h2, .section-title{
+    font-family:var(--font-display);
+}
+
+::-webkit-scrollbar{
+    width:10px;
+    height:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#BFE4FB;
+    border-radius:10px;
+}

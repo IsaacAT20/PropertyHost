@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PropertyHost - Maintenance</title>
+    <title>PropertyHost - Reports</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
@@ -14,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
 </head>
 
@@ -24,10 +26,10 @@
         <aside class="sidebar">
 
             <div class="logo">
-                <h1> PropertyHost</h1>
+                <h1>🏡 PropertyHost</h1>
             </div>
 
-                        <nav>
+            <nav>
                 <a href="index.html" data-page="index">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
                     <span>Dashboard</span>
@@ -40,15 +42,15 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     <span>Finance</span>
                 </a>
-                <a href="maintenance.html" data-page="maintenance" class="active">
+                <a href="maintenance.html" data-page="maintenance">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     <span>Maintenance</span>
                 </a>
-                <a href="#" data-page="reports">
+                <a href="reports.html" data-page="reports" class="active">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
                     <span>Reports</span>
                 </a>
-                <a href="#" data-page="settings">
+                <a href="settings.html" data-page="settings">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                     <span>Settings</span>
                 </a>
@@ -60,45 +62,57 @@
 
             <div class="page-header">
                 <div>
-                    <h2>Maintenance</h2>
-                    <p>Tareas pendientes y en progreso.</p>
+                    <h2>Reports</h2>
+                    <p>Resumen consolidado de todas tus propiedades.</p>
                 </div>
+                <button class="filter-btn active" id="export-btn">⬇ Exportar / Imprimir</button>
             </div>
 
-            <div class="maintenance-full-list" id="maintenance-full-list">
+            <section class="finance-summary" id="report-summary">
+                <div class="card">
+                    <h3>Total Revenue</h3>
+                    <span id="report-revenue">—</span>
+                </div>
+                <div class="card">
+                    <h3>Total Expenses</h3>
+                    <span id="report-expenses">—</span>
+                </div>
+                <div class="card">
+                    <h3>Net Profit</h3>
+                    <span id="report-profit">—</span>
+                </div>
+            </section>
 
-                <div class="maintenance-item">
-                    <div class="task-info">
-                        <strong>🏊 Casa Mango - Pool Service</strong>
-                        <span>Próximo: 8 de julio</span>
+            <section class="dashboard-grid">
+                <div class="panel chart-panel">
+                    <div class="panel-head">
+                        <h3>Revenue Trend & Forecast</h3>
+                        <div class="legend">
+                            <span><span class="dot actual"></span>Actual</span>
+                            <span><span class="dot forecast"></span>Projected</span>
+                        </div>
                     </div>
-                    <span class="status-badge status-pending">Pendiente</span>
+                    <div class="chart-wrap">
+                        <canvas id="report-revenue-chart"></canvas>
+                    </div>
                 </div>
 
-                <div class="maintenance-item">
-                    <div class="task-info">
-                        <strong>🌴 Villa Sunset - Garden</strong>
-                        <span>Próximo: 6 de julio</span>
+                <div class="panel">
+                    <div class="panel-head">
+                        <h3>Expenses by Category</h3>
                     </div>
-                    <span class="status-badge status-progress">En progreso</span>
-                </div>
-
-                <div class="maintenance-item">
-                    <div class="task-info">
-                        <strong>❄ Ocean Breeze - AC Inspection</strong>
-                        <span>Completado: 2 de julio</span>
+                    <div class="chart-wrap">
+                        <canvas id="report-expense-donut"></canvas>
                     </div>
-                    <span class="status-badge status-done">Completado</span>
                 </div>
+            </section>
 
-                <div class="maintenance-item">
-                    <div class="task-info">
-                        <strong>💡 Casa Coral - Electrical Check</strong>
-                        <span>Próximo: 12 de julio</span>
-                    </div>
-                    <span class="status-badge status-pending">Pendiente</span>
+            <h2 class="section-title">Performance by Property</h2>
+
+            <div class="panel">
+                <div class="chart-wrap" style="height:320px;">
+                    <canvas id="report-property-chart"></canvas>
                 </div>
-
             </div>
 
         </main>
@@ -106,7 +120,8 @@
     </div>
 
     <script src="js/api.js"></script>
-    <script src="js/maintenance.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/reports.js"></script>
 
 </body>
 
